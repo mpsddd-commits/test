@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>로그인 / 회원가입 - v2</title>
+  <style>
+    :root{--bg:#f3f6fb;--card:#fff;--accent:#2563eb;--muted:#6b7280}
+    *{box-sizing:border-box}
+    body{margin:0;font-family:Inter,system-ui,Arial,sans-serif;background:linear-gradient(180deg,#eef2ff 0%,var(--bg) 100%);display:flex;align-items:center;justify-content:center;height:100vh;padding:24px}
+    .wrap{display:grid;grid-template-columns:1fr 420px;gap:32px;max-width:1000px;width:100%;align-items:center}
+    .hero{padding:40px}
+    .hero h1{margin:0 0 12px;font-size:28px}
+    .hero p{margin:0;color:var(--muted)}
+    .card{background:var(--card);border-radius:14px;padding:28px;box-shadow:0 8px 30px rgba(16,24,40,0.06)}
+    .tabs{display:flex;gap:8px;margin-bottom:18px}
+    .tab{flex:1;padding:10px;border-radius:10px;text-align:center;cursor:pointer;font-weight:600}
+    .tab.active{background:linear-gradient(90deg,var(--accent),#1e90ff);color:#fff}
+    form{display:flex;flex-direction:column;gap:10px}
+    label{font-size:13px;color:#374151}
+    input{padding:12px;border-radius:10px;border:1px solid #e6e9ef;font-size:14px}
+    .row{display:flex;gap:10px}
+    .row .half{flex:1}
+    .actions{display:flex;gap:10px;align-items:center;margin-top:8px}
+    .btn{flex:1;padding:12px;border-radius:10px;border:0;background:var(--accent);color:#fff;font-weight:700;cursor:pointer}
+    .btn.ghost{background:transparent;border:1px solid #e5e7eb;color:var(--muted);font-weight:600}
+    .muted{color:var(--muted);font-size:13px}
+    .small{font-size:12px;color:var(--muted)}
+    .socials{display:flex;gap:8px}
+    .socials button{flex:1;padding:10px;border-radius:10px;border:1px solid #e6e9ef;background:white;cursor:pointer}
+    .toggle-pass{position:relative}
+    .toggle-pass button{position:absolute;right:8px;top:8px;border:0;background:transparent;cursor:pointer}
+    @media (max-width:880px){.wrap{grid-template-columns:1fr;}
+      .hero{order:2}
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="hero">
+      <h1>환영합니다 👋</h1>
+      <p>계정으로 로그인하거나 새 계정을 만들어 서비스를 시작하세요. 간단한 클라이언트 유효성 검사와 접근성을 고려한 폼입니다.</p>
+    </div>
+
+    <div class="card" id="authCard">
+      <div class="tabs" role="tablist">
+        <div class="tab active" role="tab" aria-selected="true" id="tab-login" onclick="show('login')">로그인</div>
+        <div class="tab" role="tab" id="tab-signup" onclick="show('signup')">회원가입</div>
+      </div>
+
+      <!-- 로그인 -->
+      <div id="login" data-view>
+        <form id="loginForm" onsubmit="handleLogin(event)">
+          <label for="loginId">아이디 또는 이메일</label>
+          <input id="loginId" name="loginId" type="text" autocomplete="username" required />
+
+          <label for="loginPass">비밀번호</label>
+          <div class="toggle-pass">
+            <input id="loginPass" name="password" type="password" autocomplete="current-password" minlength="6" required />
+            <button type="button" onclick="togglePass('loginPass')" aria-label="비밀번호 보기/숨기기">👁️</button>
+          </div>
+
+          <div class="row actions">
+            <label class="small"><input type="checkbox" id="remember" /> 로그인 유지</label>
+            <button type="submit" class="btn">로그인</button>
+          </div>
+
+          <div style="display:flex;justify-content:space-between;align-items:center;margin-top:8px">
+            <span class="small"><a href="#" onclick="alert('비밀번호 재설정 흐름을 여기에 연결하세요')">비밀번호를 잊으셨나요?</a></span>
+            <span class="small">또는</span>
+            <div class="socials">
+              <button type="button" onclick="alert('구글 로그인 연동')">Google</button>
+              <button type="button" onclick="alert('깃허브 로그인 연동')">GitHub</button>
+            </div>
+          </div>
+        </form>
+      </div>
+
+      <!-- 회원가입 -->
+      <div id="signup" data-view style="display:none">
+        <form id="signupForm" onsubmit="handleSignup(event)">
+          <label for="newId">아이디</label>
+          <input id="newId" name="newId" type="text" minlength="3" required />
+
+          <div class="row">
+            <div class="half">
+              <label for="firstName">이름</label>
+              <input id="firstName" name="firstName" type="text" required />
+            </div>
+            <div class="half">
+              <label for="lastName">성</label>
+              <input id="lastName" name="lastName" type="text" required />
+            </div>
+          </div>
+
+          <label for="email">이메일</label>
+          <input id="email" name="email" type="email" autocomplete="email" required />
+
+          <label for="pass1">비밀번호</label>
+          <div class="toggle-pass">
+            <input id="pass1" name="pass1" type="password" minlength="6" required />
+            <button type="button" onclick="togglePass('pass1')" aria-label="비밀번호 보기/숨기기">👁️</button>
+          </div>
+
+          <label for="pass2">비밀번호 확인</label>
+          <input id="pass2" name="pass2" type="password" minlength="6" required />
+
+          <div class="row actions">
+            <button type="submit" class="btn">회원가입</button>
+            <button type="button" class="btn ghost" onclick="fillDemo()">데모 입력</button>
+          </div>
+
+          <p class="muted">가입하면 이용약관과 개인정보처리방침에 동의하게 됩니다.</p>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // 뷰 전환
+    function show(name){
+      document.querySelectorAll('[data-view]').forEach(el=>el.style.display='none');
+      document.getElementById(name).style.display='block';
+      document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));
+      document.getElementById('tab-'+name).classList.add('active');
+    }
+
+    // 비밀번호 보기/숨기기
+    function togglePass(id){
+      const el = document.getElementById(id);
+      el.type = el.type === 'password' ? 'text' : 'password';
+    }
+
+    // 간단한 유효성 검사 및 제출 흉내
+    function handleLogin(e){
+      e.preventDefault();
+      const id = document.getElementById('loginId').value.trim();
+      const pass = document.getElementById('loginPass').value;
+      if(!id || pass.length < 6){
+        alert('아이디(또는 이메일)과 6자 이상의 비밀번호를 입력하세요.');
+        return;
+      }
+      // 실제로는 여기서 서버로 전송합니다.
+      alert('로그인 요청 전송: ' + id);
+    }
+
+    function handleSignup(e){
+      e.preventDefault();
+      const newId = document.getElementById('newId').value.trim();
+      const email = document.getElementById('email').value.trim();
+      const p1 = document.getElementById('pass1').value;
+      const p2 = document.getElementById('pass2').value;
+      if(p1 !== p2){
+        alert('비밀번호가 일치하지 않습니다.');
+        return;
+      }
+      if(p1.length < 6){
+        alert('비밀번호는 6자 이상이어야 합니다.');
+        return;
+      }
+      // 실제 회원가입 로직을 여기에 연결하세요
+      alert('회원가입 요청 전송: ' + newId + ' (' + email + ')');
+    }
+
+    // 데모 데이터 채우기
+    function fillDemo(){
+      document.getElementById('newId').value = 'user123';
+      document.getElementById('firstName').value = '홍';
+      document.getElementById('lastName').value = '길동';
+      document.getElementById('email').value = 'demo@example.com';
+      document.getElementById('pass1').value = 'password';
+      document.getElementById('pass2').value = 'password';
+    }
+
+    // 접근성: 키보드로 탭 전환 가능하게 엔터 처리
+    document.querySelectorAll('.tab').forEach(t=>t.addEventListener('keydown', e=>{
+      if(e.key === 'Enter' || e.key === ' '){ e.preventDefault(); t.click(); }
+    }));
+  </script>
+</body>
+</html>
