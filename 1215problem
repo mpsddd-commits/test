@@ -26,7 +26,7 @@
     </div>
     <div>
       <label for="file">파일:</label>
-      <input type="file" name="file" id="file" multiple accept="png"/>
+      <input type="file" name="file" id="file" multiple accept="image/*"/>
     </div>
     <button type="submit">업로드</button>
   </form>
