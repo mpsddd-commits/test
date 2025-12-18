@@ -21,7 +21,7 @@
     <header class="container-fluid bg-dark">
             <div class=" text-center">
                 <a href="movie.html" class="nav-link ">
-                    <p class="fw-bold text-info h1"><span class="text-primary">AI</span> Moives</p>
+                    <p class="fw-bold text-info h1 d-inline"><span class="text-primary">AI</span>Moives</p>
                 </a>    
             </div>
     </header>
@@ -44,14 +44,16 @@
                 </div>
             </a> 
         </div>  
-        
-        <form action="#" class="d-flex flex-column justify-content-center align-items-center mt-2 fw-bold p-16 " id="movie-search">
+    </main>
+    
+    <section  class="container-fluid">
+        <form action="#" class="d-flex flex-column justify-content-center align-items-center mt-2 mx-2 fw-bold p-16 " id="movie-search">
             <input type="text" name="keyword" placeholder="영화 제목을 입력하세요." class="d-block m-1 bg-secondary w-100 rounded-2 p-2 border-0 shadow-none"  />
             <input type="submit" value="검색" class="btn btn-warning m-2 text-white fw-bold w-100 rounded-2 p-3" style="max-width: 300px;" />
         </form>
         
-        <div class="d-flex flex-wrap mx-1">
-            <div class="flex-fill d-flex flex-column mx-1" style="max-width: 46%;">
+        <div class="row ">
+            <div class="col-6 mb-2">
                 <a href="movie.html" class="position-relative d-flex flex-column h-100 "  >
                 <div class="d-block flex-fill position-relative">
                     <img src="https://i.namu.wiki/i/ZhwKQoGH7o6vVbylcYG7v7iR755xZcVO5ick0hkbvmNHf_KpjHJMFb9my0Y_8e4tjLRpc_NSqNjFhirmBXAuV-VI12in8NqWTQrLu99FAO2h2lvZZLJT6uLsF0YH-OWS5ml9Bw0QBriTnCPjNpOlfA.webp" alt="Movie Poster" class="d-block w-100 " style="height: 275px;"/>
@@ -63,7 +65,7 @@
                 </div>
                 </a>
             </div>
-            <div class="flex-fill d-flex flex-column mx-1" style="max-width: 46%;">
+            <div class="col-6 mb-2" >
                 <a href="movie.html" class="position-relative d-flex flex-column h-100 "  >
                 <div class="d-block flex-fill position-relative">
                     <img src="https://i.namu.wiki/i/6Eit_wFywWbiqXZKBqdlZ6N4b06Q47Y8zmxvIWumwbiowtb79QSoy9btPXkEgbZWzaNrE-CjDB0zF8vPVohHftmTRr7j_KchoswRUwdiiynJyGZX00OQ22YKAsF8Rdb_40r1C4dEmFN0P8qjn6rpBw.webp" alt="Movie Poster" class="d-block w-100 " style="height: 275px;"/>
@@ -76,8 +78,7 @@
                 </a>
             </div>    
         </div>
-
-
-    </main>
+    </section>
+   
 </body>
 </html>
