@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>bootstrap+main</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+
+    <style>
+        input[type=text]::placeholder {
+            color: #f3f3f3;
+        }
+         input[type=text]:focus {
+			box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.2);
+		}
+        
+    </style>
+</head>
+<body class="bg-danger">
+    
+    <header class="container-fluid bg-dark">
+            <div class=" text-center">
+                <a href="movie.html" class="nav-link ">
+                    <p class="fw-bold text-info h1"><span class="text-primary">AI</span> Moives</p>
+                </a>    
+            </div>
+    </header>
+    
+    <main>
+        <div>
+            <a href="movie.html" class=" position-relative z-1" style="height: 300px;" >
+                <img src="https://i.namu.wiki/i/ZhwKQoGH7o6vVbylcYG7v7iR755xZcVO5ick0hkbvmNHf_KpjHJMFb9my0Y_8e4tjLRpc_NSqNjFhirmBXAuV-VI12in8NqWTQrLu99FAO2h2lvZZLJT6uLsF0YH-OWS5ml9Bw0QBriTnCPjNpOlfA.webp" class="d-block img-fluid w-100 object-fit-cover" style="height: 300px;" alt="movie Poster">
+
+                <div class="position-absolute text-white z-2 bottom-0 bg-dark bg-opacity-25" >
+                  <h3 class="fw-bold">아바타: 불과 재</h3>
+                  <p class="fw-semibold lh-1">월드 와이드 흥행 불멸의 1위 <아바타> 시리즈의 세 번째 이야기!
+                    판도라를 위협하는 재의 부족, 더 이상 인간만이 적이 아니다!
+                    12월, 모두의 운명을 뒤흔들 거대한 전투가 시작된다!
+                    인간들과의 전쟁으로 첫째 아들 ‘네테이얌’을 잃은 후,
+                    ‘제이크’와 ‘네이티리’는 깊은 슬픔에 빠진다.
+                    상실에 빠진 이들 앞에 '바랑'이 이끄는 재의 부족이 등장하면서,
+                    판도라는 더욱 큰 위험에 빠지게 되고, ‘설리’ 가족은 선택의 기로에 서게 되는데…</p>
+                    
+                </div>
+            </a> 
+        </div>  
+        
+        <form action="#" class="d-flex flex-column justify-content-center align-items-center mt-2 fw-bold p-16 " id="movie-search">
+            <input type="text" name="keyword" placeholder="영화 제목을 입력하세요." class="d-block m-1 bg-secondary w-100 rounded-2 p-2 border-0 shadow-none"  />
+            <input type="submit" value="검색" class="btn btn-warning m-2 text-white fw-bold w-100 rounded-2 p-3" style="max-width: 300px;" />
+        </form>
+        
+        <div class="d-flex flex-wrap mx-1">
+            <div class="flex-fill d-flex flex-column mx-1" style="max-width: 46%;">
+                <a href="movie.html" class="position-relative d-flex flex-column h-100 "  >
+                <div class="d-block flex-fill position-relative">
+                    <img src="https://i.namu.wiki/i/ZhwKQoGH7o6vVbylcYG7v7iR755xZcVO5ick0hkbvmNHf_KpjHJMFb9my0Y_8e4tjLRpc_NSqNjFhirmBXAuV-VI12in8NqWTQrLu99FAO2h2lvZZLJT6uLsF0YH-OWS5ml9Bw0QBriTnCPjNpOlfA.webp" alt="Movie Poster" class="d-block w-100 " style="height: 275px;"/>
+                    <div class="position-absolute p-1 bg-info bottom-0 mb-2 "> latest</div>
+                </div>
+                <div class="d-block flex-fill bg-primary p-1 rounded-2">
+                    <h3 class="fw-bold text-white">2025</h3>
+                    <p class="fw-bold text-white">아바타 : 불과재</p>
+                </div>
+                </a>
+            </div>
+            <div class="flex-fill d-flex flex-column mx-1" style="max-width: 46%;">
+                <a href="movie.html" class="position-relative d-flex flex-column h-100 "  >
+                <div class="d-block flex-fill position-relative">
+                    <img src="https://i.namu.wiki/i/6Eit_wFywWbiqXZKBqdlZ6N4b06Q47Y8zmxvIWumwbiowtb79QSoy9btPXkEgbZWzaNrE-CjDB0zF8vPVohHftmTRr7j_KchoswRUwdiiynJyGZX00OQ22YKAsF8Rdb_40r1C4dEmFN0P8qjn6rpBw.webp" alt="Movie Poster" class="d-block w-100 " style="height: 275px;"/>
+                    <div class="position-absolute p-1 bg-info bottom-0 mb-2 "> 3yr ago</div>
+                </div>
+                <div class="d-block flex-fill bg-primary p-1 rounded-2">
+                    <h3 class="fw-bold text-white">2022</h3>
+                    <p class="fw-bold text-white">아바타 : 물의길</p>
+                </div>
+                </a>
+            </div>    
+        </div>
+
+
+    </main>
+</body>
+</html>
